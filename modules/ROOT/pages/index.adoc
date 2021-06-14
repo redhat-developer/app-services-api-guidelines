@@ -1,0 +1,23 @@
+= User Documentation
+
+For documentation on the latest release of RHMI, visit the link:https://access.redhat.com/documentation/en-us/red_hat_managed_integration/1/[Customer Portal].
+
+Draft documentation
+
+* link:release-notes/master.html[Release Notes]
+
+* link:getting-started/master.html[Getting Started]
+
+* link:admin-guide/master.html[Admin Guide]
+
+* link:developer-guide/master.html[Dev Guide]
+
+* link:creating-sps/master.html[Creating Solution Patterns]
+
+
+== Additional Resources
+
+* link:../data-sync/latest/[latest Data Sync documentation]
+
+* link:../push/latest/[latest Push documentation]
+
