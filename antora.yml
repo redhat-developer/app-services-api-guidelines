@@ -1,6 +1,0 @@
-name: app-services-api-guidelines
-title: App Services API Guidelines
-version: main
-start_ROOT: ROOT::index.adoc
-nav:
- - modules/ROOT/nav.adoc 

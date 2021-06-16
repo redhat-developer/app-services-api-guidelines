@@ -1,0 +1,258 @@
+schemas:
+  ObjectReference:
+    type: object
+    properties:
+      id:
+        type: string
+      kind:
+        type: string
+      href:
+        type: string
+  List:
+    required:
+      - kind
+      - page
+      - size
+      - total
+      - items
+    type: object
+    properties:
+      kind:
+        type: string
+      page:
+        type: integer
+      size:
+        type: integer
+      total:
+        type: integer
+  Error:
+    allOf:
+      - $ref: "#/schemas/ObjectReference"
+      - type: object
+        properties:
+          code:
+            type: string
+          reason:
+            type: string
+          operation_id:
+            type: string
+  ErrorList:
+    allOf:
+      - $ref: "#/schemas/List"
+      - type: object
+        properties:
+          items:
+            type: array
+            items:
+              $ref: "#/schemas/Error"
+  
+  VersionMetadata:
+    allOf:
+      - $ref: "#/schemas/ObjectReference"
+      - type: object
+        example:
+          kind: "APIVersion"
+          id: "v1"
+          href: "/api/kafkas_mgmt/v1"
+          collections:
+            - id: "kafkas"
+              href: "/api/kafkas_mgmt/v1/kafkas"
+              kind: "KafkaList"
+        properties:
+          collections:
+            type: array
+            items:
+              allOf:
+                - $ref: "#/schemas/ObjectReference"
+  
+  RangeQuery:
+    type: object
+    properties:
+      metric:
+        type: object
+        additionalProperties:
+          type: string
+      values:
+        type: array
+        items:
+          $ref: '#/schemas/values'
+
+  CloudProviderList:
+    allOf:
+      - $ref: "#/schemas/List"
+      - type: object
+        example:
+          kind: "CloudProviderList"
+          page: "1"
+          size: "1"
+          total: "1"
+          item:
+            $ref: '#/examples/CloudProviderExample'
+        properties:
+          items:
+            type: array
+            items:
+              allOf:
+                - $ref: "#/schemas/CloudProvider"
+  CloudRegionList:
+    allOf:
+      - $ref: "#/schemas/List"
+      - type: object
+        example:
+          kind: "CloudRegionList"
+          page: "1"
+          size: "1"
+          total: "1"
+          item:
+            $ref: '#/examples/CloudRegionExample'
+        properties:
+          items:
+            type: array
+            items:
+              allOf:
+                - $ref: "#/schemas/CloudRegion"
+  CloudProvider:
+    description: 'Cloud provider.'
+    properties:
+      kind:
+        description: 'Indicates the type of this object. Will be ''CloudProvider'' link.'
+        type: string
+      id:
+        description: 'Unique identifier of the object.'
+        type: string
+      display_name:
+        description: 'Name of the cloud provider for display purposes.'
+        type: string
+      name:
+        description: 'Human friendly identifier of the cloud provider, for example `aws`.'
+        type: string
+      enabled:
+        description: 'Whether the cloud provider is enabled for deploying an OSD cluster.'
+        type: boolean
+    required:
+      - enabled
+  CloudRegion:
+    description: 'Description of a region of a cloud provider.'
+    properties:
+      kind:
+        description: 'Indicates the type of this object. Will be ''CloudRegion''.'
+        type: string
+      id:
+        description: 'Unique identifier of the object.'
+        type: string
+      display_name:
+        description: 'Name of the region for display purposes, for example `N. Virginia`.'
+        type: string
+      enabled:
+        description: 'Whether the region is enabled for deploying an OSD cluster.'
+        type: boolean
+        default: false
+    required:
+      - enabled
+
+  values:
+    type: object
+    properties:
+      Timestamp:
+        type: integer
+        format: int64
+        deprecated: true
+      timestamp:
+        type: integer
+        format: int64
+      Value:
+        type: number
+        format: double
+        deprecated: true
+      value:
+        type: number
+        format: double
+    required:
+      - value
+
+parameters:
+  id:
+    name: id
+    description: The ID of record
+    schema:
+      type: string
+    in: path
+    required: true
+  duration:
+    name: duration
+    in: query
+    description: The length of time in minutes for which to return the metrics
+    required: true
+    schema:
+      type: integer
+      format: int64
+      default: 5
+      minimum: 1
+      maximum: 4320
+    examples:
+      duration:
+        value: 5
+  interval:
+    name: interval
+    in: query
+    description: The interval in seconds between data points
+    required: true
+    schema:
+      type: integer
+      format: int64
+      default: 30
+      minimum: 1
+      maximum: 10800
+    examples:
+      interval:
+        value: 30
+  filters:
+    name: filters
+    in: query
+    description: List of metrics to fetch. Fetch all metrics when empty. List entries are internal metric names.
+    schema:
+      type: array
+      items:
+        type: string
+      default: []
+  page:
+    name: page
+    in: query
+    description: Page index
+    required: false
+    schema:
+      type: string
+    examples:
+      page:
+        value: "1"
+  size:
+    name: size
+    in: query
+    description: Number of items in each page
+    required: false
+    schema:
+      type: string
+    examples:
+      size:
+        value: "100"
+
+securitySchemes:
+  Bearer:
+    scheme: bearer
+    bearerFormat: JWT
+    type: http
+
+examples:
+  CloudProviderExample:
+    value:
+      kind: "CloudProvider"
+      id: "aws"
+      name: "aws"
+      display_name: "Amazon Web Services"
+      enabled: true
+  CloudRegionExample:
+    value:
+      kind: "CloudRegion"
+      id: "us-east-1"
+      display_name: "US East, N. Virginia"
+      enabled: true

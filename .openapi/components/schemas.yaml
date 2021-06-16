@@ -1,0 +1,91 @@
+ObjectReference:
+  type: object
+  properties:
+    id:
+      type: string
+    kind:
+      type: string
+    href:
+      type: string
+
+List:
+  required:
+    - kind
+    - page
+    - size
+    - total
+    - items
+  type: object
+  properties:
+    kind:
+      type: string
+    page:
+      type: integer
+    size:
+      type: integer
+    total:
+      type: integer
+
+Error:
+  required:
+    - id
+    - kind
+    - href
+    - code
+    - reason
+  allOf:
+    - $ref: "#ObjectReference"
+    - type: object
+      properties:
+        code:
+          type: string
+        reason:
+          type: string
+        operation_id:
+          type: string
+
+ErrorList:
+  allOf:
+    - $ref: "#List"
+    - type: object
+      properties:
+        items:
+          type: array
+          items:
+            $ref: "#Error"
+
+VersionMetadata:
+  allOf:
+    - $ref: "#ObjectReference"
+    - type: object
+      example:
+        kind: "APIVersion"
+        id: "v1"
+        href: "/api/kafkas_mgmt/v1"
+        collections:
+          - id: "kafkas"
+            href: "/api/kafkas_mgmt/v1/kafkas"
+            kind: "KafkaList"
+      properties:
+        collections:
+          type: array
+          items:
+            allOf:
+              - $ref: "#ObjectReference"
+
+ServiceStatus:
+  description: Schema for the service status response body
+  example:
+    kafkas:
+      max_capacity_reached: true
+  type: object
+  properties:
+    kafkas:
+      description: The Kafka resource api status
+      type: object
+      required:
+        - max_capacity_reached
+      properties:
+        max_capacity_reached:
+          description: Indicates whether we have reached Kafka maximum capacity
+          type: boolean
