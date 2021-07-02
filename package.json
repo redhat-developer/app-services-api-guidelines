@@ -1,0 +1,22 @@
+{
+  "name": "@rhoas/api-guidelines-monorepo",
+  "version": "0.0.1",
+  "description": "API Guidelines for Red Hat OpenShift Application Services",
+  "private": true,
+  "workspaces": [
+    "spectral"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/redhat-developer/app-services-api-guidelines.git"
+  },
+  "keywords": [
+    "api"
+  ],
+  "author": "Red Hat",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/redhat-developer/app-services-api-guidelines/issues"
+  },
+  "homepage": "https://github.com/redhat-developer/app-services-api-guidelines#readme"
+}
