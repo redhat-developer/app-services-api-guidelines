@@ -1,21 +1,25 @@
 {
-  "name": "@rhoas/spectral-ruleset",
-  "version": "0.0.3",
-  "description": "Spectral ruleset",
+  "name": "@rhoas/openapi-validator",
+  "version": "0.0.1",
+  "description": "RHOAS OpenAPI Validator",
   "private": false,
-  "main": "ruleset.yaml",
+  "bin": {
+    "rhoas-openapi-validator": "dist/index.js"
+  },
   "scripts": {
-    "build": "npm run clean && tsc && npm run copy-ruleset",
+    "build": "npm run clean && tsc",
     "clean": "rm -rf dist",
     "lint": "eslint src/**/*.ts",
-    "publish": "npm publish dist",
     "copy-ruleset": "cp ./ruleset.yaml ./dist/ruleset.yaml && cp ./package.json ./dist/package.json",
-    "spectral-lint:local": "spectral lint --ruleset ./examples/.spectral-local.yaml",
-    "spectral-lint": "spectral lint --ruleset ./examples/.spectral.yaml"
+    "validate-dev": "ts-node ./src/index.ts validate",
+    "validate": "node ./dist/index.js validate"
   },
   "dependencies": {
     "@stoplight/spectral": "^5.3.0",
-    "json-schema-resolve-allof": "^1.5.0"
+    "chalk": "^4.1.1",
+    "commander": "^8.0.0",
+    "json-schema-resolve-allof": "^1.5.0",
+    "ts-node": "^10.0.0"
   },
   "devDependencies": {
     "@types/node": "^15.12.4",
@@ -37,7 +41,7 @@
     "openapi",
     "validator",
     "rhoas",
-    "app-services-sdk"
+    "app-services"
   ],
   "author": "Red Hat Developer",
   "license": "Apache-2.0",
