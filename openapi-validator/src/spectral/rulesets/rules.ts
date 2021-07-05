@@ -1,8 +1,6 @@
 import { RuleCollection } from "@stoplight/spectral";
 
 const rules: RuleCollection = {
-	// 'operation-tags': 'off',
-	// 'openapi-tags': 'off',
 	oas3minimum:
 	{
 		given: '$',
@@ -88,6 +86,15 @@ const rules: RuleCollection = {
 		given: '$.paths',
 		severity: 'error',
 		then: { function: 'resourceSchema' }
+	},
+	'properties': {
+		given: '$.components.schemas',
+		then: {
+			function: 'pattern',
+			functionOptions: {
+				match: '/^[a-z$_]{1}[A-Z09$_]*/'
+			}
+		}
 	}
 }
 

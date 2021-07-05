@@ -26,6 +26,8 @@ paths:
   /api/foo_mgmt/v1beta/foos/{id}:
     get:
       operationId: getFooById
+      tags:
+        - "dhjfj"
       responses:
         "200":
           description: "Ok"
@@ -50,6 +52,8 @@ components:
     ObjectReference:
       type: object
       properties:
+        id:
+          type: string
         kind:
           type: string
         href:
@@ -76,7 +80,11 @@ components:
         - $ref: "#/components/schemas/ObjectReference"
         - type: object
           properties:
+            code:
+              type: string
             operation_id:
+              type: string
+            reason:
               type: string
 
   securitySchemes:

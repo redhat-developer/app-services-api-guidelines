@@ -1,0 +1,4 @@
+extends: spectral:oas
+rules:
+  openapi-tags: off
+  operation-tags: off

@@ -4,16 +4,24 @@ import expectServersConfig from "../spectral/functions/expectServersConfig";
 import objectReferenceSchema from '../spectral/functions/objectReferenceSchema'
 import resourceSchema from '../spectral/functions/resourceSchema'
 import securitySchemes from '../spectral/functions/securitySchemes'
-import ruleset from '../spectral/ruleset'
-import { readFileSync } from 'fs';
+import { readFileSync, existsSync } from 'fs';
 import path from 'path';
 import chalk from 'chalk'
+import rules from "../spectral/rulesets/rules";
 
+// Validate the OpenAPI file against the RHOAS rules
 export async function validate(filePath: string) {
+	const pathToFile = path.resolve(filePath)
+	if (!existsSync(pathToFile)) {
+		console.log(`
+File ${colorDim(filePath)} does not exist.
+		`)
+		process.exit(1);
+	}
 	const spectral = new Spectral()
 	spectral.registerFormat("oas3", isOpenApiv3);
 	spectral.registerFormat("oas2", isOpenApiv2)
-	spectral.loadRuleset('spectral:oas')
+
 	spectral.setFunctions({
 		errorSchema,
 		expectServersConfig,
@@ -21,9 +29,7 @@ export async function validate(filePath: string) {
 		resourceSchema,
 		securitySchemes,
 	})
-	spectral.setRules(ruleset)
-
-	const pathToFile = path.join(process.cwd(), filePath)
+	spectral.setRules(rules);
 	const data = readFileSync(pathToFile);
 
 	const fileExtension = path.extname(filePath);
@@ -34,7 +40,8 @@ export async function validate(filePath: string) {
 		document = new Document(data.toString(), Parsers.Json)
 	}
 
-	spectral.run(document).then((results: IRuleResult[]) => {
+	// Validate the OpenAPI file using Spectral and print the results to the console
+	spectral.loadRuleset(path.join(__dirname, '../spectral/rulesets/ruleset.yaml')).then(() => spectral.run(document)).then((results: IRuleResult[]) => {
 		let totalErrors = 0, totalWarnings = 0;
 		results.forEach((r => {
 			if (r.severity == 0) {
@@ -51,9 +58,10 @@ export async function validate(filePath: string) {
 		} else {
 			console.log('No problems were found.');
 		}
-	})
+	}).catch((e => console.log(e)))
 }
 
+// Print the validation result in a readable format
 function printResult(result: IRuleResult, pathToFile: string) {
 	const codeConfig = severityCodeConfigMap[result.severity]
 	console.log(`${pathToFile}
@@ -61,11 +69,13 @@ function printResult(result: IRuleResult, pathToFile: string) {
 	`)
 }
 
+// define the common colors to use in the CLI
 const colorDim = chalk.dim
 const colorError = chalk.red
 const colorWarn = chalk.yellow
 const colorInfo = chalk.cyan
 
+// map spectral severity code to human-readable text and an appopriate color
 const severityCodeConfigMap = {
 	0: {
 		code: 'error',

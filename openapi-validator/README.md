@@ -1,6 +1,6 @@
 ## RHOAS Spectral Ruleset
 
-A custom ruleset for [Spectral](https://stoplight.io/open-source/spectral/) following the RHOAS API Guidelines.
+An OpenAPI validation CLI following the RHOAS API Guidelines.
 
 ### Development
 
@@ -20,26 +20,18 @@ yarn build
 
 **Running examples**
 
-Validate OpenAPI files using the published module at [@rhoas/spectral-ruleset](https://npmjs.com/@rhoas/spectral-ruleset):
+Validate OpenAPI files using the uncompiled TypeScript CLI:
 
 ```shell
-yarn spectral-lint ./examples/openapi.yaml
-```
-
-Validate OpenAPI files using the local ruleset located in `./dist/ruleset.yaml`:
-
-```shell
-yarn spectral-lint:local ./examples/openapi.yaml
+yarn validate-dev ./examples/openapi-valid.yaml
 ```
 
 ### Using
 
-To use this Spectral ruleset add the following to your `.spectral.yaml`:
+It is recommended to use `npx` to validate your documents to ensure you use the latest validation rules:
 
-```yaml
-extends: '@rhoas/spectral-ruleset'
-rules:
-	...
+```shell
+npx @rhoas/openapi-validator validate ./path/to/openapi.yaml
 ```
 
 ### Rules
@@ -135,8 +127,6 @@ properties:
   reason:
     type: string
 ```
-
-> NOTE: For 5xx errors the `reason` property is not required.
 
 **Recommended**: Yes
 **Severity**: error
