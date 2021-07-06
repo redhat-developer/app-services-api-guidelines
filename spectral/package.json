@@ -1,6 +1,6 @@
 {
   "name": "@rhoas/spectral-ruleset",
-  "version": "0.0.13",
+  "version": "0.1.0",
   "description": "Spectral ruleset",
   "private": false,
   "main": "ruleset.yaml",
@@ -14,8 +14,7 @@
     "spectral-lint": "spectral lint --ruleset ./examples/.spectral.yaml"
   },
   "dependencies": {
-    "@stoplight/spectral": "^5.3.0",
-    "json-schema-resolve-allof": "^1.5.0"
+    "@stoplight/spectral": "^5.3.0"
   },
   "devDependencies": {
     "@types/node": "^15.12.4",
@@ -31,10 +30,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/craicoverflow/app-services-openapi-validator.git"
+    "url": "git+https://github.com/redhat-developer/app-services-api-guidelines.git"
   },
   "keywords": [
     "openapi",
+	"spectral",
     "validator",
     "rhoas",
     "app-services-sdk"
@@ -42,7 +42,7 @@
   "author": "Red Hat Developer",
   "license": "Apache-2.0",
   "bugs": {
-    "url": "https://github.com/craicoverflow/app-services-openapi-validator/issues"
+    "url": "https://github.com/redhat-developer/app-services-api-guidelines/issues"
   },
-  "homepage": "https://github.com/craicoverflow/app-services-openapi-validator#readme"
+  "homepage": "https://github.com/redhat-developer/app-services-api-guidelines#readme"
 }

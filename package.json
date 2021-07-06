@@ -4,14 +4,17 @@
   "description": "API Guidelines for Red Hat OpenShift Application Services",
   "private": true,
   "workspaces": [
-    "openapi-validator"
+    "spectral"
   ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/redhat-developer/app-services-api-guidelines.git"
   },
   "keywords": [
-    "api"
+    "api",
+    "api-guidelines",
+    "app-services",
+    "rhoas"
   ],
   "author": "Red Hat",
   "license": "Apache-2.0",

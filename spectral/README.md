@@ -1,8 +1,8 @@
-# RHOAS OpenAPI Validator
+# RHOAS Spectral Ruleset
 
 A custom ruleset for [Spectral](https://stoplight.io/open-source/spectral/) following the RHOAS API Guidelines.
 
-### Using
+## Using
 
 To use this Spectral ruleset add the following to your `.spectral.yaml`:
 
