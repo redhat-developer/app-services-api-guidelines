@@ -1,13 +1,15 @@
-# RHOAS OpenAPI Validator
+# RHOAS Spectral Ruleset
 
-A CLI for validating OpenAPI specifications against the RHOAS API Guidelines.
+A custom ruleset for [Spectral](https://stoplight.io/open-source/spectral/) following the RHOAS API Guidelines.
 
 ## Using
 
-It is recommended to use `npx` to validate your documents to ensure you use the latest validation rules:
+To use this Spectral ruleset add the following to your `.spectral.yaml`:
 
-```shell
-npx @rhoas/openapi-validator validate ./path/to/openapi.yaml
+```yaml
+extends: '@rhoas/spectral-ruleset'
+rules:
+	# add your custom rules here
 ```
 
 ## Rules
