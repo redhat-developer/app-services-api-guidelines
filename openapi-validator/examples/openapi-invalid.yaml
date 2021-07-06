@@ -75,11 +75,8 @@ components:
         - page
         - size
         - total
-        - items
       type: object
       properties:
-        # items:
-        #   type: array
         kind:
           type: string
         page:

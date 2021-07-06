@@ -23,7 +23,6 @@ File ${colorDim(filePath)} does not exist.
 	const spectral = new Spectral()
 	spectral.registerFormat("oas3", isOpenApiv3);
 	spectral.registerFormat("oas2", isOpenApiv2)
-	await spectral.loadRuleset('spectral:oas')
 
 	const functions = {
 		errorSchema,
@@ -35,6 +34,7 @@ File ${colorDim(filePath)} does not exist.
 		schemaDefinition
 	}
 	spectral.setFunctions(functions)
+	spectral.setRules(rules)
 	const data = readFileSync(pathToFile);
 
 	const fileExtension = path.extname(filePath);
@@ -44,9 +44,6 @@ File ${colorDim(filePath)} does not exist.
 	} else {
 		document = new Document(data.toString(), Parsers.Json)
 	}
-
-
-	spectral.setRules(rules);
 
 	// Validate the OpenAPI file using Spectral and print the results to the console
 	// spectral.loadRuleset(path.join(__dirname, '../spectral/rulesets/ruleset.yaml')).then(() => spectral.run(document)).then((results: IRuleResult[]) => {
@@ -74,7 +71,7 @@ File ${colorDim(filePath)} does not exist.
 function printResult(result: IRuleResult, pathToFile: string) {
 	const codeConfig = severityCodeConfigMap[result.severity]
 	console.log(`${pathToFile}
-  ${colorDim(result.range.start.line)}:${colorDim(result.range.end.line)}  ${codeConfig.color(codeConfig.code)}	${result.message}   ${colorDim(result?.path.join('.'))}
+  ${colorDim(result.range.start.line)}:${colorDim(result.range.end.line)}  ${codeConfig.color(codeConfig.code)}	${result.message} ${colorDim(result.code)} | ${colorDim(result?.path.join('.'))}
 	`)
 }
 

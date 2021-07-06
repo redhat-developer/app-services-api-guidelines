@@ -1,17 +1,17 @@
 import { IFunctionPaths, IFunctionResult, JSONSchema } from "@stoplight/spectral";
-import resolveAllOf from "json-schema-resolve-allof";
+import mergeAllOf from "../../util/mergeAllOf";
 import { compareSchemas } from "../schemas/compareSchemas";
 import { errorSchema } from "../schemas/errorSchema";
 
 // Recursively compare the target value of the OpenAPI document with an expected value
 export default async (targetVal: any, _, paths: IFunctionPaths): Promise<IFunctionResult[]> => {
 	const rootPath = paths.target !== void 0 ? paths.target : paths.given
-	const resolvedTargetVal = resolveAllOf(JSON.parse(JSON.stringify(targetVal)))
+	const obj = mergeAllOf(targetVal)
 
 	const results: IFunctionResult[] = [];
 
 	const methods = ['get', 'post', 'put', 'patch', 'delete']
-	for (const [endpointPath, pathConfig] of Object.entries(resolvedTargetVal)) {
+	for (const [endpointPath, pathConfig] of Object.entries(obj)) {
 		for (const m of methods) {
 			const pathMethod = pathConfig[m]
 			if (!pathMethod) {
