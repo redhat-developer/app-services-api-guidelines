@@ -1,0 +1,16 @@
+node_modules
+.DS_Store
+npm-debug.log*
+yarn-error.log*
+.eslintcache
+dist
+.validaterc
+.validateignore
+.idea/
+bin/
+.nyc_output/
+coverage/
+.spectral.json
+.spectral.yaml
+.spectral.yml
+/types

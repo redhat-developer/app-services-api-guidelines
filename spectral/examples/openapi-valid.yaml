@@ -1,0 +1,110 @@
+openapi: 3.0.0 # need this as first line to allow some IDEs to know this is an openapi document.
+info:
+  title: Foo Service Manager
+  version: 1.1.1
+  description: A fake Foo API
+  contact:
+    name: Red Hat Developer
+    email: test@test.com
+  license:
+    name: 'Apache 2.0'
+    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+servers:
+  - url: https://api.openshift.com
+    description: Main (production) server
+  - url: https://api.stage.openshift.com
+    description: Staging server
+  - url: http://localhost:8000
+    description: localhost
+  - url: /
+    description: current domain
+paths:
+  /api/foo_mgmt/v1/health:
+    get:
+      description: Get the health of the API
+      operationId: getFooHealth
+      responses:
+        "200":
+          description: Ok
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ObjectReference'
+  /api/foo_mgmt/v1beta/foos/{id}:
+    get:
+      description: Retrieve a single foo by its ID
+      operationId: getFooById
+      parameters:
+        - in: path
+          name: id
+          schema:
+            type: string
+          required: true
+      responses:
+        "200":
+          description: "Ok"
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/components/schemas/ObjectReference"
+                  - properties:
+                      bar:
+                        type: string
+        "404":
+          description: Not found
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+      security:
+        - Bearer: []
+components:
+  schemas:
+    ObjectReference:
+      type: object
+      properties:
+        id:
+          type: string
+        kind:
+          type: string
+        href:
+          type: string
+        operationName:
+          type: string
+    Error:
+      type: object
+      properties:
+        id:
+          type: string
+        code:
+          type: string
+        href:
+          type: string
+        reason:
+          type: string
+    List:
+      required:
+        - kind
+        - page
+        - size
+        - total
+        - items
+      type: object
+      properties:
+        items:
+          type: array
+        kind:
+          type: string
+        page:
+          type: integer
+        size:
+          type: integer
+        total:
+          type: integer
+
+  securitySchemes:
+    Bearer:
+      scheme: 'bearer'
+      bearerFormat: 'JWT'
+      type: 'http'
