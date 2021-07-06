@@ -10,7 +10,6 @@
     "build": "npm run clean && tsc",
     "clean": "rm -rf dist",
     "lint": "eslint src/**/*.ts",
-    "copy-ruleset": "cp ./ruleset.yaml ./dist/ruleset.yaml && cp ./package.json ./dist/package.json",
     "validate-dev": "ts-node ./src/index.ts validate",
     "validate": "node ./dist/index.js validate"
   },

@@ -1,32 +1,7 @@
 import { IFunctionPaths, IFunctionResult, JSONSchema } from "@stoplight/spectral";
 import resolveAllOf from "json-schema-resolve-allof";
-import { compareSchemas, SchemaMetadata } from "../util/compareSchemas";
-
-const errorProperties: SchemaMetadata = {
-	type: 'object',
-	properties: {
-		code: {
-			type: 'string',
-			required: true
-		},
-		id: {
-			type: 'string',
-			required: true
-		},
-		kind: {
-			type: 'string',
-			required: true
-		},
-		href: {
-			type: 'string',
-			required: true
-		},
-		reason: {
-			type: 'string',
-			required: true
-		}
-	}
-}
+import { compareSchemas } from "../schemas/compareSchemas";
+import { errorSchema } from "../schemas/errorSchema";
 
 // Recursively compare the target value of the OpenAPI document with an expected value
 export default async (targetVal: any, _, paths: IFunctionPaths): Promise<IFunctionResult[]> => {
@@ -50,7 +25,7 @@ export default async (targetVal: any, _, paths: IFunctionPaths): Promise<IFuncti
 
 				const path = [...rootPath, endpointPath, m, 'responses', code, 'content', 'application/json', 'schema'] as string[]
 				const schema: JSONSchema = (responseConfig as any).content['application/json'].schema
-				const schemaDiffResults = compareSchemas(errorProperties, schema, path)
+				const schemaDiffResults = compareSchemas(errorSchema, schema, path)
 				results.push(...schemaDiffResults)
 			}
 		}

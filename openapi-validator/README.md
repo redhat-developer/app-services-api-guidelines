@@ -1,8 +1,8 @@
-## RHOAS Spectral Ruleset
+# RHOAS OpenAPI Validator
 
-An OpenAPI validation CLI following the RHOAS API Guidelines.
+A CLI for validating OpenAPI specifications against the RHOAS API Guidelines.
 
-### Development
+## Development
 
 > NOTE: This project uses [Yarn workspaces](https://classic.yarnpkg.com/en/docs/workspaces/) for easier development.
 
@@ -26,7 +26,7 @@ Validate OpenAPI files using the uncompiled TypeScript CLI:
 yarn validate-dev ./examples/openapi-valid.yaml
 ```
 
-### Using
+## Using
 
 It is recommended to use `npx` to validate your documents to ensure you use the latest validation rules:
 
@@ -34,11 +34,11 @@ It is recommended to use `npx` to validate your documents to ensure you use the 
 npx @rhoas/openapi-validator validate ./path/to/openapi.yaml
 ```
 
-### Rules
+## Rules
 
 The RHOAS ruleset extends the Spectral built-in "oas" ruleset (except `operation-tags`, `openapi-tags`). You can see the full list of rules from that ruleset [here](https://meta.stoplight.io/docs/spectral/docs/reference/openapi-rules.md)
 
-#### oas3minimum
+### oas3minimum
 
 OpenAPI schemas should be a minimum of v3.
 
@@ -47,9 +47,9 @@ openapi: 3.0
 ```
 
 **Recommended**: Yes
-**Severity**: warn
+**Severity**: warning
 
-#### servers-config
+### servers-config
 
 The `servers` OpenAPI object must be defined and must specify at minimum the following URLs:
 
@@ -62,9 +62,9 @@ servers:
 ```
 
 **Recommended**: Yes
-**Severity**: warn
+**Severity**: warning
 
-#### info-license-apache2.0:
+### info-license-apache2.0:
 
 The `info.license.name` field must be "Apache 2.0".
 
@@ -75,9 +75,9 @@ info:
 ```
 
 **Recommended**: Yes
-**Severity**: warn
+**Severity**: warning
 
-#### info-license-apache2.0:
+### info-license-apache2.0-url:
 
 The `info.license.url` field must have the correct link for Apache 2.0.
 
@@ -88,9 +88,9 @@ info:
 ```
 
 **Recommended**: Yes
-**Severity**: warn
+**Severity**: warning
 
-#### invalid-path-regexp
+### invalid-path-regexp
 
 All paths must match the specified regular expression: `/api/([a-z_]*){1,}(/v[0-9]*(alpha|beta)?)(/{?[a-z_]*}?){1,}$"`.
 
@@ -100,43 +100,29 @@ All paths must match the specified regular expression: `/api/([a-z_]*){1,}(/v[0-
 - All following segments must follow `camel_case` and can only contain alphabetical characters.
 
 **Recommended**: Yes
-**Severity**: warn
+**Severity**: warning
 
-#### invalid-response-media-type
+### invalid-response-media-type
 
 The content type for all responses must be `application/json`.
 
 **Recommended**: Yes
 **Severity**: error
 
-#### invalid-error-schema
+### invalid-error-response-object
 
-All error response bodies must match the following schema:
-
-```yaml
-type: object
-properties:
-  id:
-    type: string
-  kind:
-    type: string
-  href:
-    type: string
-  code:
-    type: string
-  reason:
-    type: string
-```
+All error response bodies must reference `#/components/Schemas/Error`
 
 **Recommended**: Yes
 **Severity**: error
 
-#### invalid-object-resource-schema
+### invalid-object-resource-schema
 
 All API response bodies must be an `object` with three required properties:
 
 ```yaml
 type: object
+required: [id, kind, href]
 properties:
   id:
     type: string
@@ -148,3 +134,89 @@ properties:
 
 **Recommended**: Yes
 **Severity**: error
+
+### schema-name-camel-case
+
+All JSON schema objects defined in `components.schemas` must follow `CamelCase`.
+
+**Recommended**: Yes
+**Severity**: warning
+### properties-snake-case
+
+All JSON schema properties defined must follow `camel_case`.
+
+**Recommended**: Yes
+**Severity**: error
+
+### invalid-error-schema
+
+`components.schema` MUST have a valid `Error` object.
+
+```yaml
+Error:
+  type: object
+  required: [id, kind, href, code, reason]
+  properties:
+    id:
+      type: string
+    kind:
+      type: string
+    href:
+      type: string
+    code:
+      type: string
+    reason:
+      type: string
+```
+
+**Recommended**: Yes
+**Severity**: warning
+
+### invalid-object-schema
+
+`components.schema` MUST have a valid `ObjectReference` object.
+
+```yaml
+ObjectReference:
+  type: object
+  required: [id, kind, href]
+  properties:
+    id:
+      type: string
+    kind:
+      type: string
+    href:
+      type: string
+```
+
+**Recommended**: Yes
+**Severity**: warning
+
+### invalid-list-schema
+
+`components.schema` MUST have a valid `List` object.
+
+```yaml
+List:
+  required:
+    - kind
+    - page
+    - size
+    - total
+    - items
+  type: object
+  properties:
+    items:
+      type: array
+    kind:
+      type: string
+    page:
+      type: integer
+    size:
+      type: integer
+    total:
+      type: integer
+```
+
+**Recommended**: Yes
+**Severity**: warning

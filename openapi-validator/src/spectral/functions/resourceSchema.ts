@@ -1,6 +1,6 @@
 import { IFunctionPaths, IFunctionResult, JSONSchema } from "@stoplight/spectral";
 import resolveAllOf from "json-schema-resolve-allof";
-import { compareSchemas, SchemaMetadata } from "../util/compareSchemas";
+import { compareSchemas, SchemaMetadata } from "../schemas/compareSchemas";
 
 const resourceSchema: SchemaMetadata = {
 	type: 'object',

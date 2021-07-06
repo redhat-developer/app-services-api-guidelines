@@ -16,9 +16,9 @@ export interface PropertyMetadata {
 
 export type PropertyMap = { [key: string]: PropertyMetadata }
 
-export function compareSchemas(expectedSchema: SchemaMetadata, actualSchema: JSONSchema, path?: string[]): IFunctionResult[] {
+export function compareSchemas(expectedSchema: SchemaMetadata, actualSchema: JSONSchema, path: string[] = []): IFunctionResult[] {
 	const { type, properties, required } = expectedSchema
-
+				
 	const results: IFunctionResult[] = [];
 
 	if (required && (!actualSchema || Object.keys(actualSchema).length === 0)) {

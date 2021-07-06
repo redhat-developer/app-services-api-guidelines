@@ -1,9 +1,11 @@
 import { isOpenApiv3, Spectral, Document, Parsers, IRuleResult, isOpenApiv2 } from "@stoplight/spectral"
-import errorSchema from "../spectral/functions/errorSchema";
+import errorSchema from "../spectral/functions/errorResponse";
 import expectServersConfig from "../spectral/functions/expectServersConfig";
 import objectReferenceSchema from '../spectral/functions/objectReferenceSchema'
 import resourceSchema from '../spectral/functions/resourceSchema'
 import securitySchemes from '../spectral/functions/securitySchemes'
+import infoLicenseApache2 from '../spectral/functions/infoLicenseApache2'
+import schemaDefinition from "../spectral/functions/schemaDefinition";
 import { readFileSync, existsSync } from 'fs';
 import path from 'path';
 import chalk from 'chalk'
@@ -21,15 +23,18 @@ File ${colorDim(filePath)} does not exist.
 	const spectral = new Spectral()
 	spectral.registerFormat("oas3", isOpenApiv3);
 	spectral.registerFormat("oas2", isOpenApiv2)
+	await spectral.loadRuleset('spectral:oas')
 
-	spectral.setFunctions({
+	const functions = {
 		errorSchema,
 		expectServersConfig,
 		objectReferenceSchema,
 		resourceSchema,
 		securitySchemes,
-	})
-	spectral.setRules(rules);
+		infoLicenseApache2,
+		schemaDefinition
+	}
+	spectral.setFunctions(functions)
 	const data = readFileSync(pathToFile);
 
 	const fileExtension = path.extname(filePath);
@@ -40,8 +45,12 @@ File ${colorDim(filePath)} does not exist.
 		document = new Document(data.toString(), Parsers.Json)
 	}
 
+
+	spectral.setRules(rules);
+
 	// Validate the OpenAPI file using Spectral and print the results to the console
-	spectral.loadRuleset(path.join(__dirname, '../spectral/rulesets/ruleset.yaml')).then(() => spectral.run(document)).then((results: IRuleResult[]) => {
+	// spectral.loadRuleset(path.join(__dirname, '../spectral/rulesets/ruleset.yaml')).then(() => spectral.run(document)).then((results: IRuleResult[]) => {
+	spectral.run(document).then((results: IRuleResult[]) => {
 		let totalErrors = 0, totalWarnings = 0;
 		results.forEach((r => {
 			if (r.severity == 0) {
@@ -65,7 +74,7 @@ File ${colorDim(filePath)} does not exist.
 function printResult(result: IRuleResult, pathToFile: string) {
 	const codeConfig = severityCodeConfigMap[result.severity]
 	console.log(`${pathToFile}
-  ${colorDim(result.range.start.line)}:${colorDim(result.range.end.line)}  ${codeConfig.color(codeConfig.code)}	${result.message}   ${colorDim(result.path.join('.'))}
+  ${colorDim(result.range.start.line)}:${colorDim(result.range.end.line)}  ${codeConfig.color(codeConfig.code)}	${result.message}   ${colorDim(result?.path.join('.'))}
 	`)
 }
 

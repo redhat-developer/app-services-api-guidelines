@@ -3,7 +3,7 @@ info:
   title: Foo Service Manager
   version: 1.1.1
   license:
-    name: 'Apache 2.0'
+    name: 'Apache 3.0'
 servers:
   - url: https://api.openshift.com
   - url: https://api.stage.openshift.com
@@ -58,6 +58,17 @@ components:
           type: string
         href:
           type: string
+    Error:
+      allOf:
+        - $ref: "#/components/schemas/ObjectReference"
+        - properties:
+            code:
+              type: string
+            operation_id:
+              type: string
+            reason:
+              type: string
+
     List:
       required:
         - kind
@@ -67,6 +78,8 @@ components:
         - items
       type: object
       properties:
+        # items:
+        #   type: array
         kind:
           type: string
         page:
@@ -74,18 +87,7 @@ components:
         size:
           type: integer
         total:
-          type: boolean
-    Error:
-      allOf:
-        - $ref: "#/components/schemas/ObjectReference"
-        - type: object
-          properties:
-            code:
-              type: string
-            operation_id:
-              type: string
-            reason:
-              type: string
+          type: integer
 
   securitySchemes:
     Bearer:

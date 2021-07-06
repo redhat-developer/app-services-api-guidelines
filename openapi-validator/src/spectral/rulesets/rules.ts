@@ -40,22 +40,9 @@ const rules: RuleCollection = {
 		given: '$',
 		then:
 		{
-			function: 'pattern',
-			field: 'info.license.name',
-			functionOptions: { match: 'Apache 2.0' }
+			function: 'infoLicenseApache2',
+			field: 'info.license',
 		},
-	},
-	'info-license-apache2.0-url':
-	{
-		severity: 'warn',
-		recommended: true,
-		given: '$',
-		then:
-		{
-			function: 'pattern',
-			field: 'info.license.url',
-			functionOptions: { match: 'https://www.apache.org/licenses/LICENSE-2.0.html' }
-		}
 	},
 	'invalid-path-regexp':
 	{
@@ -75,11 +62,19 @@ const rules: RuleCollection = {
 		severity: 'error',
 		then: { function: 'truthy', field: 'application/json' }
 	},
-	'invalid-error-schema':
+	'invalid-error-response-object':
 	{
-		given: '$.paths',
+		given: '$.paths..responses[?( @property >= 300)].content.*',
 		severity: 'error',
-		then: { function: 'errorSchema' }
+		then: {
+			field: 'schema',
+			function: 'schema',
+			functionOptions: {
+				schema: {
+					$ref: '#/components/schemas/Error'
+				}
+			}
+		}
 	},
 	'invalid-object-resource-schema':
 	{
@@ -87,12 +82,128 @@ const rules: RuleCollection = {
 		severity: 'error',
 		then: { function: 'resourceSchema' }
 	},
-	'properties': {
-		given: '$.components.schemas',
+	'schema-name-camel-case': {
+		description: 'JSON Schema names should use CamelCase',
+		message: '`{{property}}` object name must follow CamelCase',
+		severity: 'error',
+		given: '$.components.schemas[*]~',
 		then: {
 			function: 'pattern',
 			functionOptions: {
-				match: '/^[a-z$_]{1}[A-Z09$_]*/'
+				match: '^([A-Z]{1}[a-z]{1,}){1,}$'
+			}
+		}
+	},
+	'properties-snake-case': {
+		description: "All JSON Schema properties MUST follow snake_case and be ASCII alphanumeric characters.",
+		severity: "error",
+		recommended: true,
+		message: "`{{property}}` MUST follow snake_case and be ASCII alphanumeric characters.",
+		given: "$.components.schemas..properties[*]~",
+		then: {
+			function: "pattern",
+			functionOptions: {
+				match: "/^[a-z0-9_]{1,}/"
+			}
+		}
+	},
+	'invalid-error-schema': {
+		severity: 'error',
+		recommended: true,
+		given: '$.components.schemas',
+		then: {
+			function: 'schemaDefinition',
+			field: 'Error',
+			functionOptions: {
+				definition: {
+					type: 'object',
+					properties: {
+						code: {
+							type: 'string',
+							required: true
+						},
+						id: {
+							type: 'string',
+							required: true
+						},
+						kind: {
+							type: 'string',
+							required: true
+						},
+						href: {
+							type: 'string',
+							required: true
+						},
+						reason: {
+							type: 'string',
+							required: true
+						}
+					}
+				}
+			}
+		}
+	},
+	'invalid-object-schema': {
+		severity: 'error',
+		recommended: true,
+		given: '$.components.schemas',
+		then: {
+			function: 'schemaDefinition',
+			field: 'ObjectReference',
+			functionOptions: {
+				definition: {
+					type: 'object',
+					properties: {
+						id: {
+							type: 'string',
+							required: true
+						},
+						kind: {
+							type: 'string',
+							required: true
+						},
+						href: {
+							type: 'string',
+							required: true
+						}
+					}
+				}
+			}
+		}
+	},
+	'invalid-list-schema': {
+		severity: 'error',
+		recommended: true,
+		given: '$.components.schemas',
+		then: {
+			function: 'schemaDefinition',
+			field: 'List',
+			functionOptions: {
+				definition: {
+					type: 'object',
+					properties: {
+						items: {
+							type: 'array',
+							required: true
+						},
+						kind: {
+							type: 'string',
+							required: true
+						},
+						page: {
+							type: 'integer',
+							required: true
+						},
+						size: {
+							type: 'integer',
+							required: true
+						},
+						total: {
+							type: 'integer',
+							required: true
+						}
+					}
+				}
 			}
 		}
 	}
