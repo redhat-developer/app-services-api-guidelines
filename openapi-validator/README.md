@@ -2,30 +2,6 @@
 
 A CLI for validating OpenAPI specifications against the RHOAS API Guidelines.
 
-## Development
-
-> NOTE: This project uses [Yarn workspaces](https://classic.yarnpkg.com/en/docs/workspaces/) for easier development.
-
-Install dependencies:
-
-```shell
-yarn install
-```
-
-Build:
-
-```shell
-yarn build
-```
-
-**Running examples**
-
-Validate OpenAPI files using the uncompiled TypeScript CLI:
-
-```shell
-yarn validate-dev ./examples/openapi-valid.yaml
-```
-
 ## Using
 
 It is recommended to use `npx` to validate your documents to ensure you use the latest validation rules:
@@ -220,3 +196,27 @@ List:
 
 **Recommended**: Yes
 **Severity**: warning
+
+## Development
+
+> NOTE: This project uses [Yarn workspaces](https://classic.yarnpkg.com/en/docs/workspaces/) for easier development.
+
+Install dependencies:
+
+```shell
+yarn install
+```
+
+Build:
+
+```shell
+yarn build
+```
+
+**Running examples**
+
+Validate OpenAPI files using the uncompiled TypeScript CLI:
+
+```shell
+yarn validate-dev ./examples/openapi-valid.yaml
+```
