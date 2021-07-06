@@ -1,6 +1,6 @@
 {
   "name": "@rhoas/openapi-validator",
-  "version": "0.0.1",
+  "version": "0.0.2-dev1",
   "description": "RHOAS OpenAPI Validator",
   "private": false,
   "bin": {
@@ -10,6 +10,7 @@
     "build": "npm run clean && tsc",
     "clean": "rm -rf dist",
     "lint": "eslint src/**/*.ts",
+    "prepublish": "npm run build",
     "validate-dev": "ts-node ./src/index.ts validate",
     "validate": "node ./dist/index.js validate"
   },
