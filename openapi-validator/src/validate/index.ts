@@ -46,7 +46,6 @@ File ${colorDim(filePath)} does not exist.
 	}
 
 	// Validate the OpenAPI file using Spectral and print the results to the console
-	// spectral.loadRuleset(path.join(__dirname, '../spectral/rulesets/ruleset.yaml')).then(() => spectral.run(document)).then((results: IRuleResult[]) => {
 	spectral.run(document).then((results: IRuleResult[]) => {
 		let totalErrors = 0, totalWarnings = 0;
 		results.forEach((r => {
