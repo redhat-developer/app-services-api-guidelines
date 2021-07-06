@@ -1,6 +1,6 @@
 {
   "name": "@rhoas/openapi-validator",
-  "version": "0.0.2-dev1",
+  "version": "0.0.2-dev2",
   "description": "RHOAS OpenAPI Validator",
   "private": false,
   "bin": {
