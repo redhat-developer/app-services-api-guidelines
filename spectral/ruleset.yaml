@@ -7,6 +7,7 @@ functions:
   - schemaDefinition
 rules:
   openapi-tags: off
+  operation-tags: off
 
   oas3minimum:
     given: "$"
