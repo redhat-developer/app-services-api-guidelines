@@ -217,8 +217,9 @@ yarn build
 
 **Running examples**
 
-Validate OpenAPI files using the uncompiled TypeScript CLI:
+Validate OpenAPI files using the uncompiled ruleset:
 
 ```shell
-yarn validate-dev ./examples/openapi-valid.yaml
+yarn build
+yarn spectral-lint ./examples/openapi-valid.yaml
 ```
