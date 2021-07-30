@@ -16,7 +16,7 @@ rules:
 
 The RHOAS ruleset extends the Spectral built-in "oas" ruleset (except `operation-tags`, `openapi-tags`). You can see the full list of rules from that ruleset [here](https://meta.stoplight.io/docs/spectral/docs/reference/openapi-rules.md)
 
-### oas3minimum
+### rhoas-oas3minimum
 
 OpenAPI schemas should be a minimum of v3.
 
@@ -25,9 +25,10 @@ openapi: 3.0
 ```
 
 **Recommended**: Yes
+
 **Severity**: warning
 
-### servers-config
+### rhoas-servers-config
 
 The `servers` OpenAPI object must be defined and must specify at minimum the following URLs:
 
@@ -40,9 +41,10 @@ servers:
 ```
 
 **Recommended**: Yes
+
 **Severity**: warning
 
-### info-license-apache2.0:
+### rhoas-info-license-apache2.0:
 
 The `info.license.name` field must be "Apache 2.0".
 
@@ -55,7 +57,7 @@ info:
 **Recommended**: Yes
 **Severity**: warning
 
-### info-license-apache2.0-url:
+### rhoas-info-license-apache2.0-url:
 
 The `info.license.url` field must have the correct link for Apache 2.0.
 
@@ -66,11 +68,12 @@ info:
 ```
 
 **Recommended**: Yes
+
 **Severity**: warning
 
-### invalid-path-regexp
+### rhoas-path-regexp
 
-All paths must match the specified regular expression: `/api/([a-z_]*){1,}(/v[0-9]*(alpha|beta)?)(/{?[a-z_]*}?){1,}$"`.
+All paths must match the specified regular expression: `\/api\/([a-z_]*){1,}(\/v[0-9]*(alpha|beta)?)(\/{?[a-z_]*}?){0,}$`.
 
 - The first segment must be `/api`
 - The second segment can only contain alphabetical characters and underscores "_"
@@ -80,21 +83,23 @@ All paths must match the specified regular expression: `/api/([a-z_]*){1,}(/v[0-
 **Recommended**: Yes
 **Severity**: warning
 
-### invalid-response-media-type
+### rhoas-response-media-type
 
 The content type for all responses must be `application/json`.
 
 **Recommended**: Yes
+
 **Severity**: error
 
-### invalid-error-response-object
+### rhoas-error-response
 
 All error response bodies must reference `#/components/Schemas/Error`
 
 **Recommended**: Yes
+
 **Severity**: error
 
-### invalid-object-resource-schema
+### rhoas-object-resource-schema
 
 All API response bodies must be an `object` with three required properties:
 
@@ -111,22 +116,25 @@ properties:
 ```
 
 **Recommended**: Yes
+
 **Severity**: error
 
-### schema-name-camel-case
+### rhoas-schema-name-camel-case
 
 All JSON schema objects defined in `components.schemas` must follow `CamelCase`.
 
 **Recommended**: Yes
+
 **Severity**: warning
-### properties-snake-case
+### rhoas-schema-properties-snake-case
 
 All JSON schema properties defined must follow `camel_case`.
 
 **Recommended**: Yes
+
 **Severity**: error
 
-### invalid-error-schema
+### rhoas-error-schema
 
 `components.schema` MUST have a valid `Error` object.
 
@@ -148,9 +156,10 @@ Error:
 ```
 
 **Recommended**: Yes
+
 **Severity**: warning
 
-### invalid-object-schema
+### rhoas-object-schema
 
 `components.schema` MUST have a valid `ObjectReference` object.
 
@@ -168,9 +177,10 @@ ObjectReference:
 ```
 
 **Recommended**: Yes
+
 **Severity**: warning
 
-### invalid-list-schema
+### rhoas-list-schema
 
 `components.schema` MUST have a valid `List` object.
 
@@ -197,6 +207,7 @@ List:
 ```
 
 **Recommended**: Yes
+
 **Severity**: warning
 
 ## Development

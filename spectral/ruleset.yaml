@@ -9,7 +9,7 @@ rules:
   openapi-tags: off
   operation-tags: off
 
-  oas3minimum:
+  rhoas-oas3minimum:
     given: "$"
     description: OpenAPI version must be >= 3
     recommended: true
@@ -19,7 +19,7 @@ rules:
       function: pattern
       functionOptions:
         match: 3.[0-9]?.[0-9]
-  servers-config:
+  rhoas-servers-config:
     given: "$"
     severity: warn
     recommended: true
@@ -32,14 +32,14 @@ rules:
           - https://api.stage.openshift.com
           - http://localhost:8000
           - "/"
-  info-license-apache2.0:
+  rhoas-info-license-apache2.0:
     severity: warn
     recommended: true
     given: "$"
     then:
       function: infoLicenseApache2
       field: info.license
-  invalid-path-regexp:
+  rhoas-path-regexp:
     given: "$.paths[*]~"
     severity: warn
     description:
@@ -49,14 +49,14 @@ rules:
       function: pattern
       functionOptions:
         match: "\/api\/([a-z_]*){1,}(\/v[0-9]*(alpha|beta)?)(\/{?[a-z_]*}?){0,}$"
-  invalid-response-media-type:
+  rhoas-response-media-type:
     given: "$.paths.*.*.responses.*.content"
     description: application/json is the only acceptable content type
     severity: error
     then:
       function: truthy
       field: application/json
-  invalid-error-response-object:
+  rhoas-error-response:
     given: "$.paths..responses[?( @property >= 300)].content.*"
     severity: error
     then:
@@ -65,7 +65,7 @@ rules:
       functionOptions:
         schema:
           "$ref": "#/components/schemas/Error"
-  invalid-object-resource-schema:
+  rhoas-object-resource-schema:
     given: "$.paths..responses[?( @property < 300)].content.*"
     severity: error
     then:
@@ -74,7 +74,7 @@ rules:
       functionOptions:
         schema:
           "$ref": "#/components/schemas/ObjectReference"
-  schema-name-camel-case:
+  rhoas-schema-name-camel-case:
     description: JSON Schema names should use CamelCase
     message: "`{{property}}` object name must follow CamelCase"
     severity: error
@@ -83,7 +83,7 @@ rules:
       function: pattern
       functionOptions:
         match: "^([A-Z]{1}[a-z]{1,}){1,}$"
-  properties-snake-case:
+  rhoas-schema-properties-snake-case:
     description:
       All JSON Schema properties MUST follow snake_case and be ASCII alphanumeric
       characters.
@@ -95,7 +95,7 @@ rules:
       function: pattern
       functionOptions:
         match: "/^[a-z0-9_]{1,}/"
-  invalid-error-schema:
+  rhoas-error-schema:
     severity: error
     recommended: true
     given: "$.components.schemas"
@@ -118,7 +118,7 @@ rules:
             reason:
               type: string
               required: true
-  invalid-object-schema:
+  rhoas-object-schema:
     severity: error
     recommended: true
     given: "$.components.schemas"
@@ -138,7 +138,7 @@ rules:
             href:
               type: string
               required: true
-  invalid-list-schema:
+  rhoas-list-schema:
     severity: error
     recommended: true
     given: "$.components.schemas"
