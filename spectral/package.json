@@ -10,8 +10,7 @@
     "lint": "eslint src/**/*.ts",
     "publish": "npm publish dist",
     "copy-ruleset": "cp ./ruleset.yaml ./dist/ruleset.yaml && cp ./package.json ./dist/package.json",
-    "spectral-lint:local": "spectral lint --ruleset ./examples/.spectral-local.yaml",
-    "spectral-lint": "spectral lint --ruleset ./examples/.spectral.yaml"
+    "spectral-lint": "spectral lint --ruleset ./examples/.spectral-local.yaml"
   },
   "dependencies": {
     "@stoplight/spectral": "^5.3.0"
@@ -34,7 +33,7 @@
   },
   "keywords": [
     "openapi",
-	"spectral",
+    "spectral",
     "validator",
     "rhoas",
     "app-services-sdk"
