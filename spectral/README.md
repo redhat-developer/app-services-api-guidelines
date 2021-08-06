@@ -210,6 +210,14 @@ List:
 
 **Severity**: warning
 
+### rhoas-external-$ref
+
+`$ref` values cannot be a relative path to an external file. Please use the absolute URL or convert it to an internal `$ref`.
+
+**Recommended**: Yes
+
+**Severity**: error
+
 ## Development
 
 > NOTE: This project uses [Yarn workspaces](https://classic.yarnpkg.com/en/docs/workspaces/) for easier development.
