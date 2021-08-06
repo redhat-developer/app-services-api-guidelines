@@ -23,6 +23,12 @@ paths:
             application/json:
               schema:
                $ref: '#/components/schemas/Error' 
+        "400":
+          description: br
+          content:
+            application/json:
+              schema:
+                $ref: 'openapi-invalid.yaml#/components/schemas/Error'
   /api/foo_mgmt/v1beta/foos/{id}:
     get:
       operationId: getFooById

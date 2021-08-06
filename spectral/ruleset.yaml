@@ -5,10 +5,18 @@ functions:
   - securitySchemes
   - infoLicenseApache2
   - schemaDefinition
+  - externalRefs
 rules:
   openapi-tags: off
   operation-tags: off
 
+  rhoas-external-$ref:
+    given: "$..['$ref']"
+    severity: error
+    type: 'validation'
+    resolved: false
+    then:
+      function: externalRefs
   rhoas-oas3minimum:
     given: "$"
     description: OpenAPI version must be >= 3
