@@ -4,12 +4,20 @@ A custom ruleset for [Spectral](https://stoplight.io/open-source/spectral/) foll
 
 ## Using
 
+> [npm](https://docs.npmjs.com/) is required to use Spectral.
+
 To use this Spectral ruleset add the following to your `.spectral.yaml`:
 
 ```yaml
 extends: '@rhoas/spectral-ruleset'
 rules:
 	# add your custom rules here
+```
+
+Run the Spectral CLI: 
+
+```shell
+npx @stoplight/spectral ./path/to/openapi.yaml
 ```
 
 ## Rules
