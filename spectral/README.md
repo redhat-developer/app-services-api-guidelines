@@ -10,14 +10,12 @@ To use this Spectral ruleset add the following to your `.spectral.yaml`:
 
 ```yaml
 extends: '@rhoas/spectral-ruleset'
-rules:
-	# add your custom rules here
 ```
 
 Run the Spectral CLI: 
 
 ```shell
-npx @stoplight/spectral ./path/to/openapi.yaml
+npx @stoplight/spectral lint ./path/to/openapi.yaml
 ```
 
 ## Rules
