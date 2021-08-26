@@ -70,7 +70,7 @@ The `info.license.url` field must have the correct link for Apache 2.0.
 ```yaml
 info:
   license:
-    url: 'https://www.apache.org/licenses/LICENSE-2.0.html'
+    url: 'https://www.apache.org/licenses/LICENSE-2.0'
 ```
 
 **Recommended**: Yes
