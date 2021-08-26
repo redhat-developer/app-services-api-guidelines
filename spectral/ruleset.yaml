@@ -41,7 +41,7 @@ rules:
           - http://localhost:8000
           - "/"
   rhoas-info-license-apache2.0:
-    severity: warn
+    severity: error
     recommended: true
     given: "$"
     then:
