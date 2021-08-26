@@ -1,6 +1,6 @@
 import { IFunctionPaths, IFunctionResult } from "@stoplight/spectral";
 
-export default (targetVal: any, opts: any, paths: IFunctionPaths): IFunctionResult[] => {
+export default (targetVal: any, _: any, paths: IFunctionPaths): IFunctionResult[] => {
 	const path = paths.target;
 	if (!targetVal) {
 		return [
@@ -18,8 +18,8 @@ export default (targetVal: any, opts: any, paths: IFunctionPaths): IFunctionResu
 			path: [...path, 'license']
 		})
 	}	
-	const expectUrl = 'https://www.apache.org/licenses/LICENSE-2.0.html'
-	if (targetVal?.url != expectUrl) {
+	const expectUrl = 'https://www.apache.org/licenses/LICENSE-2.0';
+	if (targetVal?.url !== expectUrl) {
 		results.push({
 			message: '`url` must be "' + expectUrl + '"',
 			path: [...path, 'license']
