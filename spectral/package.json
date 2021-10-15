@@ -13,7 +13,7 @@
     "spectral-lint": "spectral lint --ruleset ./examples/.spectral-local.yaml"
   },
   "dependencies": {
-    "@stoplight/spectral": "^5.3.0"
+    "@stoplight/spectral": "^6.0.0"
   },
   "devDependencies": {
     "@types/node": "^15.12.4",
