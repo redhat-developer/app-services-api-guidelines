@@ -3,11 +3,7 @@
 
 This document is intended as a collaborative document to agree and define standards for the design of RHOAS OpenAPI specifications.
 
-This document is not intended as a replacement for https://github.com/redhat-developer/app-services-api-guidelines tooling/linter.
-
-
 ## Versioning
-
 
 
 * Set the version number in the _info.version_ field.
