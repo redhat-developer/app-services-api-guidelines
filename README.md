@@ -1,6 +1,11 @@
-# RHOAS API Guidelines
+# Red Hat Application Services API Guidelines
 
 This repo will contain website documentation for API guidelines and tooling to help adhere to the guidelines.
-## Spectral 
 
-See [./spectral](./spectral) for information on how to use `@rhoas/spectral-ruleset` with Spectral.
+## API standards 
+
+[ApiStandards](./docs/api-standards.md)  
+
+## OpenAPI Validation 
+
+ [API validator](./spectral) helps to ensure that your specification meets all standards.
