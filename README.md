@@ -6,6 +6,6 @@ This repo will contain website documentation for API guidelines and tooling to h
 
 [ApiStandards](./docs/api-standards.md)  
 
-## Validation Against Standards 
+## OpenAPI Validation 
 
-See [./spectral](./spectral) for information on how to use `@rhoas/spectral-ruleset` with Spectral.
+ [API validator](./spectral) helps to ensure that your specification meets all standards.
