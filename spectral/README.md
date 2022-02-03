@@ -15,7 +15,8 @@ extends: '@rhoas/spectral-ruleset'
 Run the Spectral CLI: 
 
 ```shell
-npx @stoplight/spectral lint ./path/to/openapi.yaml
+npm install -g @stoplight/spectral@5.9.0
+spectral lint ./path/to/openapi.yaml
 ```
 
 ## Rules
