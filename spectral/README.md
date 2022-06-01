@@ -12,7 +12,13 @@ To use this Spectral ruleset add the following to your `.spectral.yaml`:
 extends: '@rhoas/spectral-ruleset'
 ```
 
-Run the Spectral CLI: 
+Alternatively you need to create new ruleset
+
+`
+echo "extends: '@rhoas/spectral-ruleset'" > .spectral.yaml
+`
+
+Run the Spectral CLI:
 
 ```shell
 npm install -g @stoplight/spectral@5.9.0
