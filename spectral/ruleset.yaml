@@ -56,7 +56,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "\/api\/([a-z_]*){1,}(\/v[0-9]*(alpha|beta)?)(\/{?[a-z_]*}?){0,}$"
+        match: "\/api\/v.*\/.*$"
   rhoas-response-media-type:
     given: "$.paths.*.*.responses.*.content"
     description: application/json is the only acceptable content type
