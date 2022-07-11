@@ -50,7 +50,7 @@ rules:
     severity: warn
     description:
       OpenAPI paths must start with `/api/`, followed by a version. All paths
-      must follow camel_case
+      must follow snake_case
     then:
       function: pattern
       functionOptions:
