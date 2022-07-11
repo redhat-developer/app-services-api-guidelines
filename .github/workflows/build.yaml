@@ -1,4 +1,4 @@
-name: SDK PR verification and build
+name: PR verification and build
 
 on:
   push:
