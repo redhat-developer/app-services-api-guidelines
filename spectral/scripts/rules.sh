@@ -11,4 +11,4 @@ wget -P .openapi https://raw.githubusercontent.com/redhat-developer/app-services
 
 ## TODO add more apis
 
-yarn spectral lint .openapi/kas-fleet-manager.yaml -v -r ../dist/ruleset.yaml
+yarn spectral lint .openapi/kas-fleet-manager.yaml -v -r ./examples/.spectral-local.yaml
