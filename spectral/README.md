@@ -21,8 +21,14 @@ echo "extends: '@rhoas/spectral-ruleset'" > .spectral.yaml
 Run the Spectral CLI:
 
 ```shell
-npm install -g @stoplight/spectral@5.9.0
+npm install -g @stoplight/spectral-cli@6.4.1
 spectral lint ./path/to/openapi.yaml
+```
+
+or with yarn:
+```shell
+yarn add global @stoplight/spectral-cli@6.4.1
+yarn spectral lint ./path/to/openapi.yaml
 ```
 
 ## Rules
@@ -86,12 +92,11 @@ info:
 
 ### rhoas-path-regexp
 
-All paths must match the specified regular expression: `\/api\/([a-z_]*){1,}(\/v[0-9]*(alpha|beta)?)(\/{?[a-z_]*}?){0,}$`.
+All paths must match the specified regular expression: `\/api\/v.*\/.*$`.
 
 - The first segment must be `/api`
-- The second segment can only contain alphabetical characters and underscores "_"
-- The third segment must specify the API version. This can be a major version such as `v1` or a channel-version such as `v1beta`, `v1alpha`.
-- All following segments must follow `camel_case` and can only contain alphabetical characters.
+- The second segment must specify the API version. This can be a major version such as `v1` or a channel-version such as `v1beta`, `v1alpha`.
+- All following segments must follow `snake_case` and can only contain alphabetical characters.
 
 **Recommended**: Yes
 **Severity**: warning
@@ -102,7 +107,7 @@ The content type for all responses must be `application/json`.
 
 **Recommended**: Yes
 
-**Severity**: error
+**Severity**: warning
 
 ### rhoas-error-response
 
@@ -132,16 +137,16 @@ properties:
 
 **Severity**: error
 
-### rhoas-schema-name-camel-case
+### rhoas-schema-name-pascal-case
 
-All JSON schema objects defined in `components.schemas` must follow `CamelCase`.
+All JSON schema objects defined in `components.schemas` must follow `PascalCase`.
 
 **Recommended**: Yes
 
 **Severity**: warning
 ### rhoas-schema-properties-snake-case
 
-All JSON schema properties defined must follow `camel_case`.
+All JSON schema properties defined must follow `snake_case`.
 
 **Recommended**: Yes
 
