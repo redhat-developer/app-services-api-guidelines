@@ -4,11 +4,11 @@ on:
   push:
     branches: [ main ]
     paths:
-      - "spectral/"
+      - "spectral/**"
   pull_request:
     branches: [ main ]
     paths:
-      - "spectral/"
+      - "spectral/**"
 
 jobs:
   rules-build:
