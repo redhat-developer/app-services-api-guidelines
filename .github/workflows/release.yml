@@ -1,0 +1,29 @@
+name: npm-publish
+on:
+  push:
+    tags:
+      - "*"
+jobs:
+  npm-publish:
+    name: npm-publish
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Use Node.js 16.3.0
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.3.0
+          registry-url: "https://registry.npmjs.org"
+      - run: yarn install
+      - run: yarn build
+      - name: Inject slug/short variables
+        uses: rlespinasse/github-slug-action@v4
+      - name: Validate Tag
+        run: yarn semver $GITHUB_REF_SLUG
+      - name: Update versions of packages
+        run: yarn setupRelease $GITHUB_REF_SLUG
+      - name: Publish packages
+        run: npm publish --workspace=packages
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.RHOAS_NPM_TOKEN }} #
