@@ -14,7 +14,8 @@
     "cli-integration-tests": "./scripts/rules.sh"
   },
   "dependencies": {
-    "@stoplight/spectral": "5.9.2"
+    "@stoplight/spectral-cli": "^6.4.1",
+    "@stoplight/spectral-core": "^1.12.3"
   },
   "devDependencies": {
     "@types/node": "15.14.1",

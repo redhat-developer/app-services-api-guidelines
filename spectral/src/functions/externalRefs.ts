@@ -1,4 +1,4 @@
-import { IFunctionResult } from "@stoplight/spectral";
+import { IFunctionResult } from "@stoplight/spectral-core";
 
 export default (targetVal: any): IFunctionResult[] => {
     if (!targetVal || !targetVal.length) {
@@ -12,4 +12,4 @@ export default (targetVal: any): IFunctionResult[] => {
             message: 'Only local relative `$ref` or absolute external URL `$ref` is allowed'
         }]
     }
-}
+};

@@ -1,8 +1,6 @@
-extends: spectral:oas
+extends: spectral:oas 
 functions:
   - expectServersConfig
-  - objectReferenceSchema
-  - securitySchemes
   - infoLicenseApache2
   - schemaDefinition
   - externalRefs
@@ -60,13 +58,13 @@ rules:
   rhoas-response-media-type:
     given: "$.paths.*.*.responses.*.content"
     description: application/json is the only acceptable content type
-    severity: error
+    severity: warn
     then:
       function: truthy
       field: application/json
   rhoas-error-response:
     given: "$.paths..responses[?( @property >= 300)].content.*"
-    severity: error
+    severity: error 
     then:
       field: schema
       function: schema
@@ -82,9 +80,9 @@ rules:
       functionOptions:
         schema:
           "$ref": "#/components/schemas/ObjectReference"
-  rhoas-schema-name-camel-case:
-    description: JSON Schema names should use CamelCase
-    message: "`{{property}}` object name must follow CamelCase"
+  rhoas-schema-name-pascal-case:
+    description: JSON Schema names should use PascalCase
+    message: "`{{property}}` object name must follow PascalCase"
     severity: error
     given: "$.components.schemas[*]~"
     then:
