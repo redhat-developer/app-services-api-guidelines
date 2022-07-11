@@ -54,7 +54,7 @@ rules:
     then:
       function: pattern
       functionOptions:
-        match: "\/api\/v.*\/.*$"
+        match: "\/api\/.*\/v.*\/?.*$"
   rhoas-response-media-type:
     given: "$.paths.*.*.responses.*.content"
     description: application/json is the only acceptable content type
