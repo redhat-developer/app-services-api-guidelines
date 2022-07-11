@@ -6,7 +6,6 @@
 
 
 echo "fetching kas-fleet-manager from main" 
-mkdir -R .openapi
 wget -P .openapi https://raw.githubusercontent.com/redhat-developer/app-services-sdk-js/main/.openapi/kas-fleet-manager.yaml
 
 ## TODO add more apis

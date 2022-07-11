@@ -7,7 +7,7 @@ export default (targetVal: any, _: any, context: any): IFunctionResult[] => {
 	if (!targetVal) {
 		return [
 			{
-				message: "OpenAPI `license` object is required\n in path: ",
+				message: "OpenAPI `license` object is required.",
 				path: p
 			}
 		]
