@@ -1,6 +1,6 @@
-import { IFunctionPaths, IFunctionResult } from "@stoplight/spectral";
+import { IFunctionResult } from "@stoplight/spectral-core";
 
-export default (targetVal: any, opts: any, paths: IFunctionPaths): IFunctionResult[] => {
+export default (targetVal: any, opts: any, context: any ): IFunctionResult[] => {
     if (!targetVal) {
         return [
             {
@@ -15,9 +15,8 @@ export default (targetVal: any, opts: any, paths: IFunctionPaths): IFunctionResu
             }
         ]
     }
-    const rootPath = paths.target !== void 0 ? paths.target : paths.given
+    const paths = context.path;
     const results: IFunctionResult[] = [];
-
     const expectedUrls = opts.required
     const missingUrls = [];
     for (const u of expectedUrls) {
@@ -29,7 +28,7 @@ export default (targetVal: any, opts: any, paths: IFunctionPaths): IFunctionResu
         return [
             {
                 message: `OpenAPI \`servers\` object is missing the following required URLs: ${missingUrls.join(', ')}`,
-                path: [...rootPath, 0]
+                path: [...paths, 0]
             }
         ]
     }
