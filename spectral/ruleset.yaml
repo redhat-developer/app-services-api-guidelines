@@ -7,6 +7,9 @@ functions:
 rules:
   openapi-tags: off
   operation-tags: off
+  oas3-valid-schema-example: warn
+  no-$ref-siblings: warn
+
 
   rhoas-external-$ref:
     given: "$..['$ref']"
