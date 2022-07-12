@@ -92,10 +92,10 @@ info:
 
 ### rhoas-path-regexp
 
-All paths must match the specified regular expression: `\/api\/.*\/v.*\/?.*$`.
+All paths must match the specified regular expression: `\/api\/([a-z_]*){1,}(\/v[0-9]*(alpha|beta)?)(\/{?[a-z_]*}?){0,}$`.
 
 - The first segment must be `/api`
-- The second segement denotes the service name (e.g. `/api/kafkas_mgmt`)
+- The second segement denotes the service name (e.g. `/api/kafkas_mgmt`) and may only be `snake_case`.
 - The third segment must specify the API version. This can be a major version such as `v1` or a channel-version such as `v1beta`, `v1alpha`.
 - All following segments must follow `snake_case` and can only contain alphabetical characters along and underscores but can be repeated (e.g. `/api/kafkas_mgmt/v1/kafkas/{id}/useful_metrics`) 
 
