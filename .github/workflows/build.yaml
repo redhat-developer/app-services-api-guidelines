@@ -1,5 +1,5 @@
+---
 name: PR verification and build
-
 on:
   push:
     branches: [ main ]
@@ -28,8 +28,8 @@ jobs:
     - working-directory: ./spectral
       run: yarn lint
   # Disabled until we have single API passing tests.
-  #  - working-directory: ./spectral
-  #    run: yarn cli-integration-tests
+    - working-directory: ./spectral
+      run: yarn cli-integration-tests
    
     
   

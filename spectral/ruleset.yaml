@@ -9,6 +9,7 @@ rules:
   operation-tags: off
   oas3-valid-schema-example: warn
   no-$ref-siblings: warn
+  oas3-valid-media-example: warn
 
 
   rhoas-external-$ref:
