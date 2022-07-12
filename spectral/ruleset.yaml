@@ -7,6 +7,10 @@ functions:
 rules:
   openapi-tags: off
   operation-tags: off
+  oas3-valid-schema-example: warn
+  no-$ref-siblings: warn
+  oas3-valid-media-example: warn
+
 
   rhoas-external-$ref:
     given: "$..['$ref']"
@@ -50,11 +54,11 @@ rules:
     severity: warn
     description:
       OpenAPI paths must start with `/api/`, followed by a version. All paths
-      must follow camel_case
+      must follow snake_case
     then:
       function: pattern
       functionOptions:
-        match: "\/api\/v.*\/.*$"
+        match: "\/api\/.*\/v.*\/?.*$"
   rhoas-response-media-type:
     given: "$.paths.*.*.responses.*.content"
     description: application/json is the only acceptable content type
