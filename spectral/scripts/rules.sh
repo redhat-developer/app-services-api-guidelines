@@ -4,10 +4,35 @@
 ## This apis can be used for testing
 ## Script needs to run in the test working directory
 
+spectralConfig="./examples/.spectral-local.yaml"
+baseUrl='https://raw.githubusercontent.com/redhat-developer/app-services-sdk-js/main/.openapi/'
+folder=".openapi"
+file='kas-fleet-manager.yaml'
 
-echo "fetching kas-fleet-manager from main" 
-wget -P .openapi https://raw.githubusercontent.com/redhat-developer/app-services-sdk-js/main/.openapi/kas-fleet-manager.yaml
+wget -P $folder ${baseUrl}${file}
+echo "linting $file OAS file" 
+yarn spectral lint $folder/$file -v -r $spectralConfig
 
-## TODO add more apis
+file='srs-fleet-manager.json'
+wget -P $folder ${baseUrl}${file}
+echo "linting $file OAS file" 
+yarn spectral lint $folder/$file -v -r $spectralConfig
 
-yarn spectral lint .openapi/kas-fleet-manager.yaml -v -r ./examples/.spectral-local.yaml
+## Updates made to the following need to be refected in their respective .openapi OAS files before the linting can pass and added to CI
+
+# file='connector_mgmt.yaml'
+# wget -P $folder ${baseUrl}${file}
+# echo "linting $file OAS file" 
+# yarn spectral lint $folder/$file -v -r $spectralConfig
+
+# file='smartevents.yaml'
+# wget -P $folder ${baseUrl}${file}
+# echo "linting $file OAS file" 
+# yarn spectral lint $folder/$file -v -r $spectralConfig
+
+# file='kafka-admin.yaml'
+# wget -P $folder ${baseUrl}${file}
+# echo "linting $file OAS file" 
+# yarn spectral lint $folder/$file -v -r $spectralConfig
+
+## TODO add more apis as they are onboarded
