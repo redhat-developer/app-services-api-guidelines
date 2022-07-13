@@ -27,7 +27,6 @@ jobs:
       run: yarn build
     - working-directory: ./spectral
       run: yarn lint
-  # Disabled until we have single API passing tests.
     - working-directory: ./spectral
       run: yarn cli-integration-tests
    
