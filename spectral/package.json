@@ -14,8 +14,8 @@
     "cli-integration-tests": "./scripts/rules.sh"
   },
   "dependencies": {
-    "@stoplight/spectral-cli": "^6.4.1",
-    "@stoplight/spectral-core": "^1.12.3"
+    "@stoplight/spectral-cli": "~6.4.1",
+    "@stoplight/spectral-core": "~1.12.3"
   },
   "devDependencies": {
     "@types/node": "15.14.1",
@@ -45,5 +45,9 @@
   "bugs": {
     "url": "https://github.com/redhat-developer/app-services-api-guidelines/issues"
   },
-  "homepage": "https://github.com/redhat-developer/app-services-api-guidelines#readme"
+  "homepage": "https://github.com/redhat-developer/app-services-api-guidelines#readme",
+  "peerDependencies": {
+    "@stoplight/spectral-cli": "~6.4.1",
+    "@stoplight/spectral-core": "~1.12.3"
+  }
 }
