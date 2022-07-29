@@ -1,2 +1,2 @@
-extends: 
-  - ./examples/.spectral-local.yaml
+extends:
+  ./examples/.spectral-local.yaml
