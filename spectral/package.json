@@ -50,7 +50,7 @@
     "@stoplight/spectral-cli": "6.4.1",
     "@stoplight/spectral-core": "1.12.3"
   },
-  "directories": {
-    "example": "examples"
+  "bin": {
+    "spectral": "node_modules/.bin/spectral"
   }
 }
