@@ -23,6 +23,7 @@ jobs:
       - name: Validate Tag
         run: yarn semver $GITHUB_REF_SLUG
       - name: Update versions of packages
+        working-directory: ./spectral
         run: yarn setupRelease $GITHUB_REF_SLUG
       - name: Publish packages
         run: npm publish --workspace=packages --tag=beta
