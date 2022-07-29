@@ -1,6 +1,6 @@
 {
   "name": "@rhoas/spectral-ruleset",
-  "version": "0.2.0dev",
+  "version": "0.2.0-dev",
   "description": "Spectral ruleset",
   "private": false,
   "main": "ruleset.yaml",
