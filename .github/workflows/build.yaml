@@ -2,11 +2,11 @@
 name: PR verification and build
 on:
   push:
-    branches: [ main ]
+    branches: [ main, test ]
     paths:
       - "spectral/**"
   pull_request:
-    branches: [ main ]
+    branches: [ main, test ]
     paths:
       - "spectral/**"
 
