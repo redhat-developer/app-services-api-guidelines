@@ -25,6 +25,6 @@ jobs:
       - name: Update versions of packages
         run: yarn setupRelease $GITHUB_REF_SLUG
       - name: Publish packages
-        run: npm publish --workspace=packages --tag=dev
+        run: npm publish --workspace=spectral --tag=dev
         env:
           NODE_AUTH_TOKEN: ${{ secrets.RHOAS_NPM_TOKEN }} #
