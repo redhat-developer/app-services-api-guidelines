@@ -11,6 +11,6 @@ bin/
 .nyc_output/
 coverage/
 .spectral.json
-# .spectral.yaml
+.spectral.yaml
 .spectral.yml
 /types
