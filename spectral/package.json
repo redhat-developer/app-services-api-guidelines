@@ -6,6 +6,7 @@
   "main": "ruleset.yaml",
   "scripts": {
     "build": "npm run clean && tsc && npm run copy-ruleset",
+    "build-for-publish": "tsc && npm run copy-ruleset && npm run copy-ruleset",
     "clean": "rm -rf dist",
     "lint": "eslint src/**/*.ts",
     "publish": "npm publish dist",

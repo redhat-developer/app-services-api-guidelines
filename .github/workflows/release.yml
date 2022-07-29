@@ -16,7 +16,7 @@ jobs:
           node-version: 16.3.0
           registry-url: "https://registry.npmjs.org"
       - run: yarn install
-      - run: yarn build
+      - run: yarn build-for-publish
       - name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@v4
       - name: Validate Tag
