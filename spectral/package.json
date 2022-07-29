@@ -8,7 +8,6 @@
     "build": "npm run clean && tsc && npm run copy-ruleset",
     "clean": "rm -rf dist",
     "lint": "eslint src/**/*.ts",
-    "publish": "npm publish dist",
     "copy-ruleset": "cp ./ruleset.yaml ./dist/ruleset.yaml && cp ./package.json ./dist/package.json",
     "spectral-lint": "spectral lint --ruleset ./examples/.spectral-local.yaml",
     "cli-integration-tests": "./scripts/rules.sh",
