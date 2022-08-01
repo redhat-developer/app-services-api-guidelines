@@ -1,6 +1,6 @@
 {
   "name": "@rhoas/spectral-ruleset",
-  "version": "0.2.0-dev",
+  "version": "0.2.1-dev",
   "description": "Spectral ruleset",
   "private": false,
   "main": "ruleset.yaml",
@@ -11,7 +11,8 @@
     "copy-ruleset": "cp ./ruleset.yaml ./dist/ruleset.yaml && cp ./package.json ./dist/package.json",
     "spectral-lint": "spectral lint --ruleset ./examples/.spectral-local.yaml",
     "cli-integration-tests": "./scripts/rules.sh",
-    "setupRelease": "npm version"
+    "setupRelease": "npm version",
+    "postinstall": "echo 'extends: node_modules/@rhoas/spectral-ruleset/dist/ruleset.yaml' > .spectral.yaml"
   },
   "dependencies": {
     "@stoplight/spectral-cli": "6.4.2",
