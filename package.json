@@ -1,6 +1,6 @@
 {
   "name": "@rhoas/api-guidelines",
-  "version": "0.0.2dev",
+  "version": "0.0.0",
   "description": "API Guidelines for Red Hat OpenShift Application Services",
   "private": true,
   "workspaces": [
@@ -21,8 +21,5 @@
   "bugs": {
     "url": "https://github.com/redhat-developer/app-services-api-guidelines/issues"
   },
-  "homepage": "https://github.com/redhat-developer/app-services-api-guidelines#readme",
-  "bin": {
-    "spectralx": "node_modules/.bin/spectral"
-  }
+  "homepage": "https://github.com/redhat-developer/app-services-api-guidelines#readme"
 }
