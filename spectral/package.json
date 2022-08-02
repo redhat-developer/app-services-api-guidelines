@@ -53,7 +53,7 @@
     "@stoplight/spectral-core": "1.12.4"
   },
   "bin": {
-    "spectralx": "node_modules/.bin/spectral"
+    "spectralx": "spectral/dist/spectral"
   },
   "files": [
     "dist"
