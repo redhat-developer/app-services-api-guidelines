@@ -18,12 +18,12 @@ wget -P $folder ${baseUrl}${file}
 echo "linting $file OAS file" 
 yarn spectral lint $folder/$file -v -r $spectralConfig
 
-## Updates made to the following need to be refected in their respective .openapi OAS files before the linting can pass and added to CI
+file='connector_mgmt.yaml'
+wget -P $folder ${baseUrl}${file}
+echo "linting $file OAS file" 
+yarn spectral lint $folder/$file -v -r $spectralConfig
 
-# file='connector_mgmt.yaml'
-# wget -P $folder ${baseUrl}${file}
-# echo "linting $file OAS file" 
-# yarn spectral lint $folder/$file -v -r $spectralConfig
+## Updates made to the following need to be refected in their respective .openapi OAS files before the linting can pass and added to CI
 
 # file='smartevents.yaml'
 # wget -P $folder ${baseUrl}${file}
