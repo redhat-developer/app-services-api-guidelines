@@ -19,7 +19,8 @@ jobs:
       uses: actions/setup-node@v3
       with:
         node-version: 16
-    - run: yarn install
+    - working-directory: ./spectral
+      run: yarn 
     - working-directory: ./spectral
       run: yarn build
     - working-directory: ./spectral
