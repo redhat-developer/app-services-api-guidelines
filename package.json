@@ -23,6 +23,6 @@
   },
   "homepage": "https://github.com/redhat-developer/app-services-api-guidelines#readme",
   "bin": {
-    "spectral": "node_modules/.bin/spectral"
+    "spectralx": "node_modules/.bin/spectral"
   }
 }

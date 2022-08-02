@@ -5,10 +5,11 @@
   "private": false,
   "main": "ruleset.yaml",
   "scripts": {
-    "build": "npm run clean && tsc && npm run copy-ruleset",
+    "build": "npm run clean && tsc && npm run copy-ruleset && npm run copy-binary",
     "clean": "rm -rf dist",
     "lint": "eslint src/**/*.ts",
     "copy-ruleset": "cp ./ruleset.yaml ./dist/ruleset.yaml && cp ./package.json ./dist/package.json",
+    "copy-binary": "cp ./node_modules/.bin/spectral ./dist",
     "spectral-lint": "spectral lint --ruleset ./examples/.spectral-local.yaml",
     "cli-integration-tests": "./scripts/rules.sh",
     "setupRelease": "npm version",
@@ -52,7 +53,7 @@
     "@stoplight/spectral-core": "1.12.3"
   },
   "bin": {
-    "spectral": "node_modules/.bin/spectral"
+    "spectralx": "node_modules/.bin/spectral"
   },
   "files": [
     "dist"
