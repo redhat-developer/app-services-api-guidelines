@@ -1,5 +1,5 @@
 #!/bin/bash
 
-npm install -g @stoplight/spectral
+spectral --version || npm install -g @stoplight/spectral@6.4.2
 
 spectral $@
