@@ -32,3 +32,4 @@ coverage/
 /types
 
 spectral/.openapi/
+spectral/yarn.lock

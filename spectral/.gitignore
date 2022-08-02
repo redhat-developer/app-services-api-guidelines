@@ -7,7 +7,6 @@ dist
 .validaterc
 .validateignore
 .idea/
-bin/
 .nyc_output/
 coverage/
 .spectral.json
