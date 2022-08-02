@@ -1,11 +1,11 @@
 # Red Hat Application Services API Guidelines
 
-This repo will contain website documentation for API guidelines and tooling to help adhere to the guidelines.
+RHOAS (application services) API guidelines based on OpenAPI and Spectral tooling.
 
-## API Standards 
+## RHOAS API Standards
 
-[Api Standards documentation](./docs/api-standards.md)  
+[Api Standards](./docs/api-standards.md)  
 
-## OpenAPI Validation 
+## Tooling for validation of API Standards
 
 [API Validator documentation](./spectral) helps to ensure that your specification meets all standards.
