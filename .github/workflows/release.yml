@@ -16,6 +16,7 @@ jobs:
           node-version: 16.3.0
           registry-url: "https://registry.npmjs.org"
       - run: yarn install
+        working-directory: ./spectral
       - working-directory: ./spectral
         run: yarn build
       - name: Inject slug/short variables
