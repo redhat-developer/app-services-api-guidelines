@@ -9,20 +9,24 @@ A custom ruleset for [Spectral](https://stoplight.io/open-source/spectral/) foll
 To use this Spectral ruleset add the following to your `.spectral.yaml`:
 
 ```yaml
-extends: 'node_modules/@rhoas/spectral-ruleset/dist/ruleset.yaml'
+extends: '@rhoas/spectral-ruleset'
 ```
 
 Alternatively you need to create new ruleset
-```
-echo 'extends: node_modules/@rhoas/spectral-ruleset/dist/ruleset.yaml' > .spectral.yaml
+
+```shell
+echo 'extends: @rhoas/spectral-ruleset' > .spectral.yaml
 ```
 
 Run the Spectral CLI with yarn:
+
 ```shell
 yarn add @rhoas/spectral-ruleset
 yarn spectral lint ./path/to/openapi.yaml
 ```
+
 or npm:
+
 ```shell
 npm i -g @rhoas/spectral-ruleset
 spectral lint ./path/to/openapi.yaml
@@ -60,7 +64,7 @@ servers:
 
 **Severity**: warning
 
-### rhoas-info-license-apache2.0:
+### rhoas-info-license-apache2.0
 
 The `info.license.name` field must be "Apache 2.0".
 
@@ -73,7 +77,7 @@ info:
 **Recommended**: Yes
 **Severity**: warning
 
-### rhoas-info-license-apache2.0-url:
+### rhoas-info-license-apache2.0-url
 
 The `info.license.url` field must have the correct link for Apache 2.0.
 
@@ -94,7 +98,7 @@ All paths must match the specified regular expression: `\/api\/([a-z_]*){1,}(\/v
 - The first segment must be `/api`
 - The second segement denotes the service name (e.g. `/api/kafkas_mgmt`) and may only be `snake_case`.
 - The third segment must specify the API version. This can be a major version such as `v1` or a channel-version such as `v1beta`, `v1alpha`.
-- All following segments must follow `snake_case` and can only contain alphabetical characters along and underscores but can be repeated (e.g. `/api/kafkas_mgmt/v1/kafkas/{id}/useful_metrics`) 
+- All following segments must follow `snake_case` and can only contain alphabetical characters along and underscores but can be repeated (e.g. `/api/kafkas_mgmt/v1/kafkas/{id}/useful_metrics`)
 
 **Recommended**: Yes
 **Severity**: warning
@@ -142,6 +146,7 @@ All JSON schema objects defined in `components.schemas` must follow `PascalCase`
 **Recommended**: Yes
 
 **Severity**: warning
+
 ### rhoas-schema-properties-snake-case
 
 All JSON schema properties defined must follow `snake_case`.
