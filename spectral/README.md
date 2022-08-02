@@ -9,26 +9,23 @@ A custom ruleset for [Spectral](https://stoplight.io/open-source/spectral/) foll
 To use this Spectral ruleset add the following to your `.spectral.yaml`:
 
 ```yaml
-extends: '@rhoas/spectral-ruleset'
+extends: 'node_modules/@rhoas/spectral-ruleset/dist/ruleset.yaml'
 ```
 
 Alternatively you need to create new ruleset
-
-`
-echo "extends: '@rhoas/spectral-ruleset'" > .spectral.yaml
-`
-
-Run the Spectral CLI:
-
-```shell
-npm install -g @stoplight/spectral-cli@6.4.1
-spectral lint ./path/to/openapi.yaml
+```
+echo 'extends: node_modules/@rhoas/spectral-ruleset/dist/ruleset.yaml' > .spectral.yaml
 ```
 
-or with yarn:
+Run the Spectral CLI with yarn:
 ```shell
-yarn add global @stoplight/spectral-cli@6.4.1
+yarn add @rhoas/spectral-ruleset
 yarn spectral lint ./path/to/openapi.yaml
+```
+or npm:
+```shell
+npm i -g @rhoas/spectral-ruleset
+spectral lint ./path/to/openapi.yaml
 ```
 
 ## Rules
