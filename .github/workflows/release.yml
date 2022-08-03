@@ -17,8 +17,6 @@ jobs:
           registry-url: "https://registry.npmjs.org"
       - run: yarn install
         working-directory: ./spectral
-      - working-directory: ./spectral
-        run: yarn build
       - name: Inject slug/short variables
         uses: rlespinasse/github-slug-action@v4
       - name: Validate Tag
@@ -27,8 +25,10 @@ jobs:
       - name: Update versions of packages
         working-directory: ./spectral
         run: yarn setupRelease $GITHUB_REF_SLUG
+      - run: yarn build
+        working-directory: ./spectral
       - name: Publish packages
         working-directory: ./spectral/dist
-        run: npm publish --tag=dev
+        run: npm publish --dry-run --tag=dev --verbose
         env:
           NODE_AUTH_TOKEN: ${{ secrets.RHOAS_NPM_TOKEN }} #
