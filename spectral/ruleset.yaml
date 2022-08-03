@@ -4,6 +4,7 @@ functions:
   - infoLicenseApache2
   - schemaDefinition
   - externalRefs
+functionsDir: ./dist/functions
 rules:
   openapi-tags: off
   operation-tags: off
