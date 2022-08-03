@@ -8,7 +8,7 @@
     "build": "npm run clean && tsc && npm run copy-ruleset",
     "clean": "rm -rf dist",
     "lint": "eslint src/**/*.ts",
-    "copy-ruleset": "cp ./ruleset.yaml ./dist/ruleset.yaml && cp ./package.json ./dist/package.json",
+    "copy-ruleset": "cp rhoasapi ruleset.yaml package.json ./dist ",
     "cli-integration-tests": "./scripts/rules.sh",
     "setupRelease": "npm version"
   },
@@ -45,7 +45,7 @@
   },
   "homepage": "https://github.com/redhat-developer/app-services-api-guidelines#readme",
   "bin": {
-    "rhoasapi": "./exec/rhoasapi"
+    "rhoasapi": "./rhoasapi"
   },
   "files": [
     "dist"
