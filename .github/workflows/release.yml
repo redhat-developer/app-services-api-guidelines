@@ -28,7 +28,7 @@ jobs:
         working-directory: ./spectral
         run: yarn setupRelease $GITHUB_REF_SLUG
       - name: Publish packages
-        working-directory: ./spectral
+        working-directory: ./spectral/dist
         run: npm publish --tag=dev
         env:
           NODE_AUTH_TOKEN: ${{ secrets.RHOAS_NPM_TOKEN }} #
