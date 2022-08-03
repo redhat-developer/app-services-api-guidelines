@@ -9,25 +9,19 @@ A custom ruleset for [Spectral](https://stoplight.io/open-source/spectral/) foll
 To use this Spectral ruleset add the following to your `.spectral.yaml`:
 
 ```yaml
-extends: '@rhoas/spectral-ruleset'
+extends: "@rhoas/spectral-ruleset"
 ```
 
 Alternatively you need to create new ruleset
 
 ```shell
-echo 'extends: @rhoas/spectral-ruleset' > .spectral.yaml
+echo 'extends: "@rhoas/spectral-ruleset"' > .spectral.yaml
 ```
 
-Run the Spectral CLI with npx:
+You can run ruleset as follows
 
 ```shell
-npx @rhoas/spectral-ruleset lint openapi.yaml 
-```
-
-or npm global:
-
-```shell
-npm i -g npx @rhoas/spectral-ruleset 
+npm install -g @rhoas/spectral-ruleset
 rhoasapi lint openapi.yaml 
 ```
 
@@ -260,5 +254,6 @@ Validate OpenAPI files using the uncompiled ruleset:
 
 ```shell
 yarn build
-yarn spectral-lint ./examples/openapi-valid.yaml
+npm link .
+rhoasapi lint ./examples/openapi-valid.yaml
 ```
