@@ -1,5 +1,7 @@
 #!/bin/bash
 
-spectral --version || npm install -g @stoplight/spectral
+spectral_version=`cat "../spectral.version"`
+
+spectral --version || npm install -g --force @stoplight/spectral-cli@$spectral_version
 
 spectral $@
