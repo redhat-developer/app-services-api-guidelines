@@ -18,18 +18,17 @@ Alternatively you need to create new ruleset
 echo 'extends: @rhoas/spectral-ruleset' > .spectral.yaml
 ```
 
-Run the Spectral CLI with yarn:
+Run the Spectral CLI with npx:
 
 ```shell
-yarn add @rhoas/spectral-ruleset
-yarn spectral lint ./path/to/openapi.yaml
+npx @rhoas/spectral-ruleset lint openapi.yaml 
 ```
 
-or npm:
+or npm global:
 
 ```shell
-npm i -g @rhoas/spectral-ruleset
-spectral lint ./path/to/openapi.yaml
+npm i -g npx @rhoas/spectral-ruleset 
+rhoasapi lint openapi.yaml 
 ```
 
 ## Rules
