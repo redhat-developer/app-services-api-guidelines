@@ -1,0 +1,5 @@
+./scripts
+./examples
+./src
+.eslintrc.yaml
+.spectral.yaml
