@@ -12,13 +12,6 @@ rules:
   no-$ref-siblings: warn
   oas3-valid-media-example: warn
 
-  rhoas-external-$ref:
-    given: "$..['$ref']"
-    severity: error
-    type: 'validation'
-    resolved: false
-    then:
-      function: externalRefs
   rhoas-oas3minimum:
     given: "$"
     description: OpenAPI version must be >= 3
@@ -68,7 +61,7 @@ rules:
       field: application/json
   rhoas-error-response:
     given: "$.paths..responses[?( @property >= 300)].content.*"
-    severity: error 
+    severity:  warn
     then:
       field: schema
       function: schema
@@ -77,7 +70,7 @@ rules:
           "$ref": "#/components/schemas/Error"
   rhoas-object-resource-schema:
     given: "$.paths..responses[?( @property < 300)].content.*"
-    severity: error
+    severity: warn 
     then:
       function: schema
       field: schema
@@ -106,7 +99,7 @@ rules:
       functionOptions:
         match: "/^[a-z0-9_]{1,}/"
   rhoas-error-schema:
-    severity: error
+    severity: warn
     recommended: true
     given: "$.components.schemas"
     then:
@@ -129,7 +122,7 @@ rules:
               type: string
               required: true
   rhoas-object-schema:
-    severity: error
+    severity: warn
     recommended: true
     given: "$.components.schemas"
     then:
@@ -149,7 +142,7 @@ rules:
               type: string
               required: true
   rhoas-list-schema:
-    severity: error
+    severity: warn
     recommended: true
     given: "$.components.schemas"
     then:
@@ -174,3 +167,10 @@ rules:
             total:
               type: integer
               required: true
+  rhoas-operaton-id:
+    severity: warn
+    recommended: true
+    given: "$.paths.*.*"
+    then:
+      function: truthy
+      field: operationId
