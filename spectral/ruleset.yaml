@@ -167,3 +167,10 @@ rules:
             total:
               type: integer
               required: true
+  rhoas-operaton-id:
+    severity: warn
+    recommended: true
+    given: "$.paths.*.*"
+    then:
+      function: truthy
+      field: operationId
