@@ -29,6 +29,6 @@ jobs:
         working-directory: ./spectral
       - name: Publish packages
         working-directory: ./spectral/dist
-        run: npm publish --tag=dev --verbose
+        run: npm publish --verbose
         env:
           NODE_AUTH_TOKEN: ${{ secrets.RHOAS_NPM_TOKEN }} #
