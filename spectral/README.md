@@ -224,13 +224,13 @@ List:
 
 **Severity**: warning
 
-### rhoas-external-$ref
+### rhoas-operaton-id
 
-`$ref` values cannot be a relative path to an external file. Please use the absolute URL or convert it to an internal `$ref`.
+`operationId` should be present.This ID will become the method name in the SDK.
 
 **Recommended**: Yes
 
-**Severity**: error
+**Severity**: warn
 
 ## Development
 
