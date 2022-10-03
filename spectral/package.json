@@ -13,12 +13,12 @@
     "setupRelease": "npm version"
   },
   "dependencies": {
-    "@stoplight/spectral-core": "1.14.1"
+    "@stoplight/spectral-core": "1.14.2"
   },
   "devDependencies": {
-    "@types/node": "16.11.63",
-    "@typescript-eslint/eslint-plugin": "5.38.1",
-    "@typescript-eslint/parser": "5.38.1",
+    "@types/node": "16.11.64",
+    "@typescript-eslint/eslint-plugin": "5.39.0",
+    "@typescript-eslint/parser": "5.39.0",
     "eslint": "8.24.0",
     "eslint-config-standard": "17.0.0",
     "eslint-plugin-import": "2.26.0",
