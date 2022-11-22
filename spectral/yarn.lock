@@ -144,10 +144,10 @@
   resolved "https://registry.yarnpkg.com/@stoplight/path/-/path-1.3.2.tgz#96e591496b72fde0f0cdae01a61d64f065bd9ede"
   integrity sha512-lyIc6JUlUA8Ve5ELywPC8I2Sdnh1zc1zmbYgVarhXIp9YeAB0ReeqmGEOWNtlHkbP2DAA1AL65Wfn2ncjK/jtQ==
 
-"@stoplight/spectral-core@1.15.1":
-  version "1.15.1"
-  resolved "https://registry.yarnpkg.com/@stoplight/spectral-core/-/spectral-core-1.15.1.tgz#47af07762bd9fdab6d9907eda5514459674cb8f8"
-  integrity sha512-IZV8L1Hyz9759KdqJIA90W5uvurHplMmaPPIZjQzG2Bq/39kN/sbLA/Js8uOf3xB9cHBbG599t4AB+uGsI8t0g==
+"@stoplight/spectral-core@1.15.2":
+  version "1.15.2"
+  resolved "https://registry.yarnpkg.com/@stoplight/spectral-core/-/spectral-core-1.15.2.tgz#c63e5fe939270b917476135118b457d772cd895b"
+  integrity sha512-mO+GkcMQAvuPqzoopdTL63k8GJ1j8O8ePDPp+OpCcNM+fZjxpPF9+fRO8D/fbs/BHIqF2N1aGwaQMIEzkxe/BQ==
   dependencies:
     "@stoplight/better-ajv-errors" "1.0.3"
     "@stoplight/json" "~3.20.1"
