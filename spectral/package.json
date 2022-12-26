@@ -16,9 +16,9 @@
     "@stoplight/spectral-core": "1.16.0"
   },
   "devDependencies": {
-    "@types/node": "18.11.17",
-    "@typescript-eslint/eslint-plugin": "5.47.0",
-    "@typescript-eslint/parser": "5.47.0",
+    "@types/node": "18.11.18",
+    "@typescript-eslint/eslint-plugin": "5.47.1",
+    "@typescript-eslint/parser": "5.47.1",
     "eslint": "8.30.0",
     "eslint-config-standard": "17.0.0",
     "eslint-plugin-import": "2.26.0",
