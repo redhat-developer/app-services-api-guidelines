@@ -18,7 +18,8 @@ jobs:
       - run: yarn install
         working-directory: ./spectral
       - name: Inject slug/short variables
-        uses: rlespinasse/github-slug-action@v4
+        # v4
+        uses: rlespinasse/github-slug-action@a362e5fb42057a3a23a62218b050838f1bacca5d
       - name: Validate Tag
         working-directory: ./spectral
         run: yarn semver $GITHUB_REF_SLUG
