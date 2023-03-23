@@ -13,7 +13,7 @@
     "setupRelease": "npm version"
   },
   "dependencies": {
-    "@stoplight/spectral-core": "1.16.1"
+    "@stoplight/spectral-core": "1.17.0"
   },
   "devDependencies": {
     "@types/node": "18.15.5",
