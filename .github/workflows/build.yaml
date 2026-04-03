@@ -14,11 +14,11 @@ jobs:
   rules-build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
+    - uses: actions/checkout@v6
     - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v4
+      uses: actions/setup-node@v6
       with:
-        node-version: 16
+        node-version: 24
     - working-directory: ./spectral
       run: yarn 
     - working-directory: ./spectral
