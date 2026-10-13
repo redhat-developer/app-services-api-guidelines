@@ -9,16 +9,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.4.0
       - name: Use Node.js 16.3.0
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v4.4.0
         with:
-          node-version: 16.3.0
+          node-version: 16.20.2
           registry-url: "https://registry.npmjs.org"
       - run: yarn install
         working-directory: ./spectral
       - name: Inject slug/short variables
-        uses: rlespinasse/github-slug-action@102b1a064a9b145e56556e22b18b19c624538d94 # v4
+        uses: rlespinasse/github-slug-action@797d68864753cbceedc271349d402da4590e6302 # v4.5.0
       - name: Validate Tag
         working-directory: ./spectral
         run: yarn semver $GITHUB_REF_SLUG
